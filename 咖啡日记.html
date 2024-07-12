@@ -1,0 +1,598 @@
+<!doctype html>
+<html>
+<head>
+<meta charset='UTF-8'><meta name='viewport' content='width=device-width initial-scale=1'>
+
+<link href='https://fonts.loli.net/css?family=Open+Sans:400italic,700italic,700,400&subset=latin,latin-ext' rel='stylesheet' type='text/css' /><style type='text/css'>html {overflow-x: initial !important;}:root { --bg-color:#ffffff; --text-color:#333333; --select-text-bg-color:#B5D6FC; --select-text-font-color:auto; --monospace:"Lucida Console",Consolas,"Courier",monospace; --title-bar-height:20px; }
+.mac-os-11 { --title-bar-height:28px; }
+html { font-size: 14px; background-color: var(--bg-color); color: var(--text-color); font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; -webkit-font-smoothing: antialiased; }
+body { margin: 0px; padding: 0px; height: auto; inset: 0px; font-size: 1rem; line-height: 1.42857; overflow-x: hidden; background: inherit; tab-size: 4; }
+iframe { margin: auto; }
+a.url { word-break: break-all; }
+a:active, a:hover { outline: 0px; }
+.in-text-selection, ::selection { text-shadow: none; background: var(--select-text-bg-color); color: var(--select-text-font-color); }
+#write { margin: 0px auto; height: auto; width: inherit; word-break: normal; overflow-wrap: break-word; position: relative; white-space: normal; overflow-x: visible; padding-top: 36px; }
+#write.first-line-indent p { text-indent: 2em; }
+#write.first-line-indent li p, #write.first-line-indent p * { text-indent: 0px; }
+#write.first-line-indent li { margin-left: 2em; }
+.for-image #write { padding-left: 8px; padding-right: 8px; }
+body.typora-export { padding-left: 30px; padding-right: 30px; }
+.typora-export .footnote-line, .typora-export li, .typora-export p { white-space: pre-wrap; }
+.typora-export .task-list-item input { pointer-events: none; }
+@media screen and (max-width: 500px) {
+  body.typora-export { padding-left: 0px; padding-right: 0px; }
+  #write { padding-left: 20px; padding-right: 20px; }
+  .CodeMirror-sizer { margin-left: 0px !important; }
+  .CodeMirror-gutters { display: none !important; }
+}
+#write li > figure:last-child { margin-bottom: 0.5rem; }
+#write ol, #write ul { position: relative; }
+img { max-width: 100%; vertical-align: middle; image-orientation: from-image; }
+button, input, select, textarea { color: inherit; font: inherit; }
+input[type="checkbox"], input[type="radio"] { line-height: normal; padding: 0px; }
+*, ::after, ::before { box-sizing: border-box; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p, #write pre { width: inherit; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p { position: relative; }
+p { line-height: inherit; }
+h1, h2, h3, h4, h5, h6 { break-after: avoid-page; break-inside: avoid; orphans: 4; }
+p { orphans: 4; }
+h1 { font-size: 2rem; }
+h2 { font-size: 1.8rem; }
+h3 { font-size: 1.6rem; }
+h4 { font-size: 1.4rem; }
+h5 { font-size: 1.2rem; }
+h6 { font-size: 1rem; }
+.md-math-block, .md-rawblock, h1, h2, h3, h4, h5, h6, p { margin-top: 1rem; margin-bottom: 1rem; }
+.hidden { display: none; }
+.md-blockmeta { color: rgb(204, 204, 204); font-weight: 700; font-style: italic; }
+a { cursor: pointer; }
+sup.md-footnote { padding: 2px 4px; background-color: rgba(238, 238, 238, 0.7); color: rgb(85, 85, 85); border-radius: 4px; cursor: pointer; }
+sup.md-footnote a, sup.md-footnote a:hover { color: inherit; text-transform: inherit; text-decoration: inherit; }
+#write input[type="checkbox"] { cursor: pointer; width: inherit; height: inherit; }
+figure { overflow-x: auto; margin: 1.2em 0px; max-width: calc(100% + 16px); padding: 0px; }
+figure > table { margin: 0px; }
+tr { break-inside: avoid; break-after: auto; }
+thead { display: table-header-group; }
+table { border-collapse: collapse; border-spacing: 0px; width: 100%; overflow: auto; break-inside: auto; text-align: left; }
+table.md-table td { min-width: 32px; }
+.CodeMirror-gutters { border-right: 0px; background-color: inherit; }
+.CodeMirror-linenumber { user-select: none; }
+.CodeMirror { text-align: left; }
+.CodeMirror-placeholder { opacity: 0.3; }
+.CodeMirror pre { padding: 0px 4px; }
+.CodeMirror-lines { padding: 0px; }
+div.hr:focus { cursor: none; }
+#write pre { white-space: pre-wrap; }
+#write.fences-no-line-wrapping pre { white-space: pre; }
+#write pre.ty-contain-cm { white-space: normal; }
+.CodeMirror-gutters { margin-right: 4px; }
+.md-fences { font-size: 0.9rem; display: block; break-inside: avoid; text-align: left; overflow: visible; white-space: pre; background: inherit; position: relative !important; }
+.md-fences-adv-panel { width: 100%; margin-top: 10px; text-align: center; padding-top: 0px; padding-bottom: 8px; overflow-x: auto; }
+#write .md-fences.mock-cm { white-space: pre-wrap; }
+.md-fences.md-fences-with-lineno { padding-left: 0px; }
+#write.fences-no-line-wrapping .md-fences.mock-cm { white-space: pre; overflow-x: auto; }
+.md-fences.mock-cm.md-fences-with-lineno { padding-left: 8px; }
+.CodeMirror-line, twitterwidget { break-inside: avoid; }
+.footnotes { opacity: 0.8; font-size: 0.9rem; margin-top: 1em; margin-bottom: 1em; }
+.footnotes + .footnotes { margin-top: 0px; }
+.md-reset { margin: 0px; padding: 0px; border: 0px; outline: 0px; vertical-align: top; background: 0px 0px; text-decoration: none; text-shadow: none; float: none; position: static; width: auto; height: auto; white-space: nowrap; cursor: inherit; -webkit-tap-highlight-color: transparent; line-height: normal; font-weight: 400; text-align: left; box-sizing: content-box; direction: ltr; }
+li div { padding-top: 0px; }
+blockquote { margin: 1rem 0px; }
+li .mathjax-block, li p { margin: 0.5rem 0px; }
+li blockquote { margin: 1rem 0px; }
+li { margin: 0px; position: relative; }
+blockquote > :last-child { margin-bottom: 0px; }
+blockquote > :first-child, li > :first-child { margin-top: 0px; }
+.footnotes-area { color: rgb(136, 136, 136); margin-top: 0.714rem; padding-bottom: 0.143rem; white-space: normal; }
+#write .footnote-line { white-space: pre-wrap; }
+@media print {
+  body, html { border: 1px solid transparent; height: 99%; break-after: avoid; break-before: avoid; font-variant-ligatures: no-common-ligatures; }
+  #write { margin-top: 0px; padding-top: 0px; border-color: transparent !important; }
+  .typora-export * { -webkit-print-color-adjust: exact; }
+  .typora-export #write { break-after: avoid; }
+  .typora-export #write::after { height: 0px; }
+  .is-mac table { break-inside: avoid; }
+  .typora-export-show-outline .typora-export-sidebar { display: none; }
+}
+.footnote-line { margin-top: 0.714em; font-size: 0.7em; }
+a img, img a { cursor: pointer; }
+pre.md-meta-block { font-size: 0.8rem; min-height: 0.8rem; white-space: pre-wrap; background: rgb(204, 204, 204); display: block; overflow-x: hidden; }
+p > .md-image:only-child:not(.md-img-error) img, p > img:only-child { display: block; margin: auto; }
+#write.first-line-indent p > .md-image:only-child:not(.md-img-error) img { left: -2em; position: relative; }
+p > .md-image:only-child { display: inline-block; width: 100%; }
+#write .MathJax_Display { margin: 0.8em 0px 0px; }
+.md-math-block { width: 100%; }
+.md-math-block:not(:empty)::after { display: none; }
+.MathJax_ref { fill: currentcolor; }
+[contenteditable="true"]:active, [contenteditable="true"]:focus, [contenteditable="false"]:active, [contenteditable="false"]:focus { outline: 0px; box-shadow: none; }
+.md-task-list-item { position: relative; list-style-type: none; }
+.task-list-item.md-task-list-item { padding-left: 0px; }
+.md-task-list-item > input { position: absolute; top: 0px; left: 0px; margin-left: -1.2em; margin-top: calc(1em - 10px); border: none; }
+.math { font-size: 1rem; }
+.md-toc { min-height: 3.58rem; position: relative; font-size: 0.9rem; border-radius: 10px; }
+.md-toc-content { position: relative; margin-left: 0px; }
+.md-toc-content::after, .md-toc::after { display: none; }
+.md-toc-item { display: block; color: rgb(65, 131, 196); }
+.md-toc-item a { text-decoration: none; }
+.md-toc-inner:hover { text-decoration: underline; }
+.md-toc-inner { display: inline-block; cursor: pointer; }
+.md-toc-h1 .md-toc-inner { margin-left: 0px; font-weight: 700; }
+.md-toc-h2 .md-toc-inner { margin-left: 2em; }
+.md-toc-h3 .md-toc-inner { margin-left: 4em; }
+.md-toc-h4 .md-toc-inner { margin-left: 6em; }
+.md-toc-h5 .md-toc-inner { margin-left: 8em; }
+.md-toc-h6 .md-toc-inner { margin-left: 10em; }
+@media screen and (max-width: 48em) {
+  .md-toc-h3 .md-toc-inner { margin-left: 3.5em; }
+  .md-toc-h4 .md-toc-inner { margin-left: 5em; }
+  .md-toc-h5 .md-toc-inner { margin-left: 6.5em; }
+  .md-toc-h6 .md-toc-inner { margin-left: 8em; }
+}
+a.md-toc-inner { font-size: inherit; font-style: inherit; font-weight: inherit; line-height: inherit; }
+.footnote-line a:not(.reversefootnote) { color: inherit; }
+.md-attr { display: none; }
+.md-fn-count::after { content: "."; }
+code, pre, samp, tt { font-family: var(--monospace); }
+kbd { margin: 0px 0.1em; padding: 0.1em 0.6em; font-size: 0.8em; color: rgb(36, 39, 41); background: rgb(255, 255, 255); border: 1px solid rgb(173, 179, 185); border-radius: 3px; box-shadow: rgba(12, 13, 14, 0.2) 0px 1px 0px, rgb(255, 255, 255) 0px 0px 0px 2px inset; white-space: nowrap; vertical-align: middle; }
+.md-comment { color: rgb(162, 127, 3); opacity: 0.6; font-family: var(--monospace); }
+code { text-align: left; vertical-align: initial; }
+a.md-print-anchor { white-space: pre !important; border-width: initial !important; border-style: none !important; border-color: initial !important; display: inline-block !important; position: absolute !important; width: 1px !important; right: 0px !important; outline: 0px !important; background: 0px 0px !important; text-decoration: initial !important; text-shadow: initial !important; }
+.os-windows.monocolor-emoji .md-emoji { font-family: "Segoe UI Symbol", sans-serif; }
+.md-diagram-panel > svg { max-width: 100%; }
+[lang="flow"] svg, [lang="mermaid"] svg { max-width: 100%; height: auto; }
+[lang="mermaid"] .node text { font-size: 1rem; }
+table tr th { border-bottom: 0px; }
+video { max-width: 100%; display: block; margin: 0px auto; }
+iframe { max-width: 100%; width: 100%; border: none; }
+.highlight td, .highlight tr { border: 0px; }
+mark { background: rgb(255, 255, 0); color: rgb(0, 0, 0); }
+.md-html-inline .md-plain, .md-html-inline strong, mark .md-inline-math, mark strong { color: inherit; }
+.md-expand mark .md-meta { opacity: 0.3 !important; }
+mark .md-meta { color: rgb(0, 0, 0); }
+@media print {
+  .typora-export h1, .typora-export h2, .typora-export h3, .typora-export h4, .typora-export h5, .typora-export h6 { break-inside: avoid; }
+}
+.md-diagram-panel .messageText { stroke: none !important; }
+.md-diagram-panel .start-state { fill: var(--node-fill); }
+.md-diagram-panel .edgeLabel rect { opacity: 1 !important; }
+.md-fences.md-fences-math { font-size: 1em; }
+.md-fences-advanced:not(.md-focus) { padding: 0px; white-space: nowrap; border: 0px; }
+.md-fences-advanced:not(.md-focus) { background: inherit; }
+.typora-export-show-outline .typora-export-content { max-width: 1440px; margin: auto; display: flex; flex-direction: row; }
+.typora-export-sidebar { width: 300px; font-size: 0.8rem; margin-top: 80px; margin-right: 18px; }
+.typora-export-show-outline #write { --webkit-flex:2; flex: 2 1 0%; }
+.typora-export-sidebar .outline-content { position: fixed; top: 0px; max-height: 100%; overflow: hidden auto; padding-bottom: 30px; padding-top: 60px; width: 300px; }
+@media screen and (max-width: 1024px) {
+  .typora-export-sidebar, .typora-export-sidebar .outline-content { width: 240px; }
+}
+@media screen and (max-width: 800px) {
+  .typora-export-sidebar { display: none; }
+}
+.outline-content li, .outline-content ul { margin-left: 0px; margin-right: 0px; padding-left: 0px; padding-right: 0px; list-style: none; }
+.outline-content ul { margin-top: 0px; margin-bottom: 0px; }
+.outline-content strong { font-weight: 400; }
+.outline-expander { width: 1rem; height: 1.42857rem; position: relative; display: table-cell; vertical-align: middle; cursor: pointer; padding-left: 4px; }
+.outline-expander::before { content: ""; position: relative; font-family: Ionicons; display: inline-block; font-size: 8px; vertical-align: middle; }
+.outline-item { padding-top: 3px; padding-bottom: 3px; cursor: pointer; }
+.outline-expander:hover::before { content: ""; }
+.outline-h1 > .outline-item { padding-left: 0px; }
+.outline-h2 > .outline-item { padding-left: 1em; }
+.outline-h3 > .outline-item { padding-left: 2em; }
+.outline-h4 > .outline-item { padding-left: 3em; }
+.outline-h5 > .outline-item { padding-left: 4em; }
+.outline-h6 > .outline-item { padding-left: 5em; }
+.outline-label { cursor: pointer; display: table-cell; vertical-align: middle; text-decoration: none; color: inherit; }
+.outline-label:hover { text-decoration: underline; }
+.outline-item:hover { border-color: rgb(245, 245, 245); background-color: var(--item-hover-bg-color); }
+.outline-item:hover { margin-left: -28px; margin-right: -28px; border-left: 28px solid transparent; border-right: 28px solid transparent; }
+.outline-item-single .outline-expander::before, .outline-item-single .outline-expander:hover::before { display: none; }
+.outline-item-open > .outline-item > .outline-expander::before { content: ""; }
+.outline-children { display: none; }
+.info-panel-tab-wrapper { display: none; }
+.outline-item-open > .outline-children { display: block; }
+.typora-export .outline-item { padding-top: 1px; padding-bottom: 1px; }
+.typora-export .outline-item:hover { margin-right: -8px; border-right: 8px solid transparent; }
+.typora-export .outline-expander::before { content: "+"; font-family: inherit; top: -1px; }
+.typora-export .outline-expander:hover::before, .typora-export .outline-item-open > .outline-item > .outline-expander::before { content: "−"; }
+.typora-export-collapse-outline .outline-children { display: none; }
+.typora-export-collapse-outline .outline-item-open > .outline-children, .typora-export-no-collapse-outline .outline-children { display: block; }
+.typora-export-no-collapse-outline .outline-expander::before { content: "" !important; }
+.typora-export-show-outline .outline-item-active > .outline-item .outline-label { font-weight: 700; }
+.md-inline-math-container mjx-container { zoom: 0.95; }
+
+
+:root {
+    --side-bar-bg-color: #fafafa;
+    --control-text-color: #777;
+}
+
+@include-when-export url(https://fonts.loli.net/css?family=Open+Sans:400italic,700italic,700,400&subset=latin,latin-ext);
+
+/* open-sans-regular - latin-ext_latin */
+  /* open-sans-italic - latin-ext_latin */
+    /* open-sans-700 - latin-ext_latin */
+    /* open-sans-700italic - latin-ext_latin */
+  html {
+    font-size: 16px;
+    -webkit-font-smoothing: antialiased;
+}
+
+body {
+    font-family: "Open Sans","Clear Sans", "Helvetica Neue", Helvetica, Arial, 'Segoe UI Emoji', sans-serif;
+    color: rgb(51, 51, 51);
+    line-height: 1.6;
+}
+
+#write {
+    max-width: 860px;
+  	margin: 0 auto;
+  	padding: 30px;
+    padding-bottom: 100px;
+}
+
+@media only screen and (min-width: 1400px) {
+	#write {
+		max-width: 1024px;
+	}
+}
+
+@media only screen and (min-width: 1800px) {
+	#write {
+		max-width: 1200px;
+	}
+}
+
+#write > ul:first-child,
+#write > ol:first-child{
+    margin-top: 30px;
+}
+
+a {
+    color: #4183C4;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    position: relative;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    font-weight: bold;
+    line-height: 1.4;
+    cursor: text;
+}
+h1:hover a.anchor,
+h2:hover a.anchor,
+h3:hover a.anchor,
+h4:hover a.anchor,
+h5:hover a.anchor,
+h6:hover a.anchor {
+    text-decoration: none;
+}
+h1 tt,
+h1 code {
+    font-size: inherit;
+}
+h2 tt,
+h2 code {
+    font-size: inherit;
+}
+h3 tt,
+h3 code {
+    font-size: inherit;
+}
+h4 tt,
+h4 code {
+    font-size: inherit;
+}
+h5 tt,
+h5 code {
+    font-size: inherit;
+}
+h6 tt,
+h6 code {
+    font-size: inherit;
+}
+h1 {
+    font-size: 2.25em;
+    line-height: 1.2;
+    border-bottom: 1px solid #eee;
+}
+h2 {
+    font-size: 1.75em;
+    line-height: 1.225;
+    border-bottom: 1px solid #eee;
+}
+
+/*@media print {
+    .typora-export h1,
+    .typora-export h2 {
+        border-bottom: none;
+        padding-bottom: initial;
+    }
+
+    .typora-export h1::after,
+    .typora-export h2::after {
+        content: "";
+        display: block;
+        height: 100px;
+        margin-top: -96px;
+        border-top: 1px solid #eee;
+    }
+}*/
+
+h3 {
+    font-size: 1.5em;
+    line-height: 1.43;
+}
+h4 {
+    font-size: 1.25em;
+}
+h5 {
+    font-size: 1em;
+}
+h6 {
+   font-size: 1em;
+    color: #777;
+}
+p,
+blockquote,
+ul,
+ol,
+dl,
+table{
+    margin: 0.8em 0;
+}
+li>ol,
+li>ul {
+    margin: 0 0;
+}
+hr {
+    height: 2px;
+    padding: 0;
+    margin: 16px 0;
+    background-color: #e7e7e7;
+    border: 0 none;
+    overflow: hidden;
+    box-sizing: content-box;
+}
+
+li p.first {
+    display: inline-block;
+}
+ul,
+ol {
+    padding-left: 30px;
+}
+ul:first-child,
+ol:first-child {
+    margin-top: 0;
+}
+ul:last-child,
+ol:last-child {
+    margin-bottom: 0;
+}
+blockquote {
+    border-left: 4px solid #dfe2e5;
+    padding: 0 15px;
+    color: #777777;
+}
+blockquote blockquote {
+    padding-right: 0;
+}
+table {
+    padding: 0;
+    word-break: initial;
+}
+table tr {
+    border: 1px solid #dfe2e5;
+    margin: 0;
+    padding: 0;
+}
+table tr:nth-child(2n),
+thead {
+    background-color: #f8f8f8;
+}
+table th {
+    font-weight: bold;
+    border: 1px solid #dfe2e5;
+    border-bottom: 0;
+    margin: 0;
+    padding: 6px 13px;
+}
+table td {
+    border: 1px solid #dfe2e5;
+    margin: 0;
+    padding: 6px 13px;
+}
+table th:first-child,
+table td:first-child {
+    margin-top: 0;
+}
+table th:last-child,
+table td:last-child {
+    margin-bottom: 0;
+}
+
+.CodeMirror-lines {
+    padding-left: 4px;
+}
+
+.code-tooltip {
+    box-shadow: 0 1px 1px 0 rgba(0,28,36,.3);
+    border-top: 1px solid #eef2f2;
+}
+
+.md-fences,
+code,
+tt {
+    border: 1px solid #e7eaed;
+    background-color: #f8f8f8;
+    border-radius: 3px;
+    padding: 0;
+    padding: 2px 4px 0px 4px;
+    font-size: 0.9em;
+}
+
+code {
+    background-color: #f3f4f4;
+    padding: 0 2px 0 2px;
+}
+
+.md-fences {
+    margin-bottom: 15px;
+    margin-top: 15px;
+    padding-top: 8px;
+    padding-bottom: 6px;
+}
+
+
+.md-task-list-item > input {
+  margin-left: -1.3em;
+}
+
+@media print {
+    html {
+        font-size: 13px;
+    }
+    table,
+    pre {
+        page-break-inside: avoid;
+    }
+    pre {
+        word-wrap: break-word;
+    }
+}
+
+.md-fences {
+	background-color: #f8f8f8;
+}
+#write pre.md-meta-block {
+	padding: 1rem;
+    font-size: 85%;
+    line-height: 1.45;
+    background-color: #f7f7f7;
+    border: 0;
+    border-radius: 3px;
+    color: #777777;
+    margin-top: 0 !important;
+}
+
+.mathjax-block>.code-tooltip {
+	bottom: .375rem;
+}
+
+.md-mathjax-midline {
+    background: #fafafa;
+}
+
+#write>h3.md-focus:before{
+	left: -1.5625rem;
+	top: .375rem;
+}
+#write>h4.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+#write>h5.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+#write>h6.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+.md-image>.md-meta {
+    /*border: 1px solid #ddd;*/
+    border-radius: 3px;
+    padding: 2px 0px 0px 4px;
+    font-size: 0.9em;
+    color: inherit;
+}
+
+.md-tag {
+    color: #a7a7a7;
+    opacity: 1;
+}
+
+.md-toc { 
+    margin-top:20px;
+    padding-bottom:20px;
+}
+
+.sidebar-tabs {
+    border-bottom: none;
+}
+
+#typora-quick-open {
+    border: 1px solid #ddd;
+    background-color: #f8f8f8;
+}
+
+#typora-quick-open-item {
+    background-color: #FAFAFA;
+    border-color: #FEFEFE #e5e5e5 #e5e5e5 #eee;
+    border-style: solid;
+    border-width: 1px;
+}
+
+/** focus mode */
+.on-focus-mode blockquote {
+    border-left-color: rgba(85, 85, 85, 0.12);
+}
+
+header, .context-menu, .megamenu-content, footer{
+    font-family: "Segoe UI", "Arial", sans-serif;
+}
+
+.file-node-content:hover .file-node-icon,
+.file-node-content:hover .file-node-open-state{
+    visibility: visible;
+}
+
+.mac-seamless-mode #typora-sidebar {
+    background-color: #fafafa;
+    background-color: var(--side-bar-bg-color);
+}
+
+.md-lang {
+    color: #b4654d;
+}
+
+/*.html-for-mac {
+    --item-hover-bg-color: #E6F0FE;
+}*/
+
+#md-notification .btn {
+    border: 0;
+}
+
+.dropdown-menu .divider {
+    border-color: #e5e5e5;
+    opacity: 0.4;
+}
+
+.ty-preferences .window-content {
+    background-color: #fafafa;
+}
+
+.ty-preferences .nav-group-item.active {
+    color: white;
+    background: #999;
+}
+
+.menu-item-container a.menu-style-btn {
+    background-color: #f5f8fa;
+    background-image: linear-gradient( 180deg , hsla(0, 0%, 100%, 0.8), hsla(0, 0%, 100%, 0)); 
+}
+
+
+
+</style><title>咖啡日记</title>
+</head>
+<body class='typora-export os-windows'><div class='typora-export-content'>
+<div id='write'  class=''><p><span>用来记录我喝过的咖啡和了解到的产区、豆种知识。</span></p><h1 id='绪论------咖啡一种饮料而已'><span>绪论——咖啡，一种饮料而已</span></h1><p><strong><span>我为什么要写这个md文档？</span></strong></p><p><span>2023年2月底，我购入了一套咖啡器具，开始了我的手冲咖啡入门之路。随后的一年里，我保持着每天1~2杯的喝咖啡习惯，并且逐渐学习到了很多咖啡知识。但到了现在，我对咖啡的了解似乎达到了瓶颈，与此同时，我对其的热情也没有一开始那么高涨了。我希望能够通过自己的一些笔记和总结，加深我对咖啡这件事的了解程度，从而进一步保持自己对咖啡的热爱——我希望咖啡是可以陪伴我一生的饮品。</span></p><p><strong><span>咖啡对于我来说是什么？</span></strong></p><p><span>在谈论咖啡之前，让我们先把视角放大到这一类事物上。现代人，至少是现代的中国年轻人，处在一个饮品自由的时代。无论是随便一家便利店，还是街边随处可见的奶茶店，都有各种各样的饮料供人解渴。每次我们喝除水以外的饮品时，很多所谓的健康专家就会大呼小叫。在医院里，我们常常见到“某种饮料含有多少多少糖”的警示标语；在手机上，我们见到各种散播“减肥焦虑”的博主；在长辈口中我们又经常听到“不要喝饮料，对人身体不好”的谆谆教导……所以，我们为什么不被允许喝饮料，而我们又为什么总要喝饮料？</span></p><p><span>事实上，饮料并没有什么害处，除了它可能含有很高的热量。过多的糖分会导致我们容易患上糖尿病，或是肥胖。除此之外，我实在难以找到任何其他的危害（当然，除了碳酸饮料还可能对人的牙齿不好以外）。我们喜欢喝饮料的很大一部分原因也正是我们这种生物实在是对糖上瘾——这也没办法，是基因决定的。试想一下，几万年以前，当我们的祖先还过着采集狩猎的生活时，很难获取到足够的热量。获得热量的最好方式是什么？当然是吃糖。而我们的祖先最有可能直接摄入大量糖的情形就是遇到了一大棵果实非常甜的果树。我们的祖先会潜意识地把水果吃到吃不下为止，因为如果现在不吃，以后这些果子迟早会被其他动物吃掉。这是我们基因所决定的，人类是一种嗜甜的动物。从这一层面上来讲，喜欢喝饮料根本不是我们的错误。</span></p><p><span>对于我来说，我并不是那么嗜好甜食的人（或许我这样的人放在采集社会根本活不下来）。我对甜其实并没有那么着迷，也因此我没有特别喜欢喝饮料。这反而让我感到很轻松，因为我并不经常喝饮料，所以我每次喝饮料的时候都不会关注它到底有多少热量，我也从来不会买所谓的“无糖”饮料，我讨厌被人工添加的甜味剂欺骗的感觉。不过，我确实也不能接受太强的甜度，我一般会点少糖的果茶，如果喝到太甜的瓶装饮料也会扔掉——单纯觉得难喝而已。于我而言，一杯好的饮料应该是风味复杂的。它可以酸，也可以甜，还可以苦，甚至可以有泔水味（比如老北京豆汁儿）。但是，要想成为一杯被我认可的饮料，那么它的风味就不能是一种。它的风味需要有层级感，我的口腔可以感受它的重量，最好还带点余味，并且越接近于纯天然越好！我这样的想法并不是因为我迷信防腐剂或是食品添加剂对人的健康危害多么大，只是我觉得，大自然有这么多美妙的东西提供给我们，我们又何必生搬硬套呢？真正纯天然的东西是和谐的，是简单且深奥的，我喜欢这种感觉。</span></p><p><span>咖啡就是这么一种饮料，大自然的馈赠。</span></p><p><strong><span>为什么咖啡仅仅是一种饮料？</span></strong></p><p><span>关于咖啡对于人的影响，我这里必须多提几句。咖啡对人有坏处吗？很多人说咖啡因摄入过多导致钙流失，还有上瘾，戒断反应……诚然，咖啡因作为一种精神类药物，确实可以让人上瘾，但是我们所饮用的咖啡往往并没有过量的咖啡因。美国食品药品监督管理局提到正常成人每日咖啡因摄入量400mg以下则不会带来任何影响，而一杯手冲咖啡的咖啡因含量大概在120-150mg之间。因此每日一杯咖啡是相当安全的。至于钙流失……目前没有任何科学研究可以佐证这样的观点。</span></p><p><span>那么，如果长时间保有喝咖啡的习惯，会不会有戒断反应呢？在这一点上，需要具体问题具体分析。首先，每个人的体质不同，因此对咖啡的反应也不同。咖啡因在人体内的代谢半衰期是4-6小时，有些人对咖啡很敏感，喝一点就睡不着觉，有些人则喝很多也能睡着。其次，戒断过于粗略，咖啡毕竟不是毒品，反应并不是非常明显。拿我举例子，我在规律性每天饮用1-2杯手冲咖啡后，停止饮用咖啡会导致上午没有精神，但如果本来有很紧急的事情的话，那么肾上腺素的作用会使得这种疲惫消失，反而非常精神。而停止饮用咖啡对下午和晚上来讲基本没有影响。</span></p><p><span>那么咖啡有没有好处呢？显然，，，没有。虽然咖啡被证实可以促进消化，有利尿的作用，但是对于普通人的身体来说，它并没有明显的长期好处。因此，我倾向与认为，咖啡仅仅是一种饮料——在适量的饮用下，对健康没有任何影响，但可以给我们带来身心的愉悦。最重要的是，体验不同国家不同地区出产的咖啡风味，感受它们的不同和联系，这不就已经足够令人愉悦了吗？</span></p><p><strong><span>如何理解咖啡这一种“饮料”呢？</span></strong></p><p><span>咖啡首先是一中热带经济作物。就像众多水果一样，咖啡树会结出咖啡果实，我们把这种果实命名为咖啡樱桃。咖啡樱桃在采摘之后经过去皮、发酵、干燥等过程之后，只保留咖啡樱桃的种子——也就是咖啡生豆。最后，咖啡豆经过烘焙就变成了咖啡熟豆。随后，我们将豆子磨成粉末，用水萃取，就形成了一杯咖啡浸出液。我们可以选择将咖啡浸出液直接饮用，也可以在添加一些其他饮品或食物（如牛奶、风味糖浆、巧克力等等）之后再饮用。综上，咖啡从一种植物变成一杯饮品，需要经过以下几个阶段：</span></p><ul><li><span>种咖啡树</span></li><li><span>收获咖啡樱桃</span></li><li><span>经过处理获取干燥的种子（咖啡生豆）</span></li><li><span>将生豆烘焙为熟豆</span></li><li><span>萃取熟豆</span></li></ul><p><span>其实，只要把咖啡和其他饮品相互比较一下，我们就可以发现它们的共同点。红酒是通过种植葡萄、采收葡萄、发酵葡萄这三个步骤而制成的；茶则需要种植茶树、采茶、处理、浸泡萃取这四大流程……从大致的方向来看，这些饮品实际非常相似，都是作物成熟之后再处理制成，但在细节方面有所不同。首先，红酒从种植到装瓶，大概率都在同一个庄园完成。庄园内有葡萄种植的地块，由庄园主统一管理葡萄田的种植、采收、酿造、装瓶。从葡萄树到葡萄酒，往往在一个地方就走过了全程，只有销售阶段，葡萄酒才会流通。而对于咖啡与茶叶来说，往往种植作物的是当地农民，处理作物的是附近的处理厂，随后贸易商将处理好的作物再销售到全国乃至世界各地……而咖啡在生豆贸易结束后，还需要烘焙商将咖啡烘焙为熟豆。因此，在饮品处理的过程中，三者对分工的依赖程度是：咖啡&gt;茶叶&gt;红酒。</span></p><h1 id='历史'><span>历史</span></h1><p><span>咖啡的历史，一个看似不重要的章节。毕竟，关于咖啡的历史不管如何曲折，都不会影响我们品尝一杯美味的咖啡。那么，我们为什么还要探讨咖啡的历史？为什么不把咖啡下放到二级标题？要解答这些问题，我们要先看看，关于咖啡的历史究竟包含哪些内容？</span></p><p><span>首先，咖啡的历史是一部全球贸易史。咖啡起源于阿比西尼亚，也就是今天的埃塞俄比亚，随后被带到了也门。也门随后变成了</span></p><p><span>咖啡也是一个食品工程发展的历史</span></p><p><span>咖啡的历史还是一部农业史</span></p><p><span>最后，咖啡的历史也是一部商业史。不管是星巴克的崛起，还是现在中国咖啡市场的快速增长，这些商业行为都体现了咖啡作为一个商品的无限潜力。</span></p><h1 id='贸易与咖啡------咖啡行业中的人们'><span>贸易与咖啡——咖啡行业中的人们</span></h1><p><span>一些咖啡初学者在开始学习咖啡是，都会问这么一个问题：咖啡是如何从一颗种子变成一杯咖啡的？这个问题也可以用来检验一个人是否真正入门咖啡。事实上，粗略地回答这个问题并不难，但融汇贯通地将这个问题答好却非常困难。我必须承认，这个问题我也未必能答好，因为其涉及到太多的知识了。当然，首要的就是明白上一章我们介绍的咖啡历史，除此之外，还要懂一些植物学、农学、地理常识、有机化学、咖啡豆种、处理法等等。哦，还有最重要的是要会自己做咖啡，经常自己买豆子，并且要喝得足够多。</span></p><p><span>其实说到底，这个问题就是贯穿本文的线索。咖啡的学问无非就是把咖啡种下去，长出来，处理好，我们炒一炒，再磨成粉萃取，最后喝掉。这样一看就简单多了。真正难的是，种什么好？怎么样种咖啡能长好？怎么处理好？怎么炒能炒好？怎么萃取好？甚至还有怎么喝，怎么感受咖啡的风味……这么一看实在是太难了。</span></p><p><span>本章无意全部解决这些问题，详细的问题由以下的各章节描述清楚。本章还想用一个更加偏向于人文的视角，把这个问题做一些修改：咖啡是如何从农民的手里传到我们的手里的？这个问题本质和开头提到的是一样的，但我们更希望从每一个咖啡从业者的角度描述这一过程。相比咖啡物理上的变化，我们更关注一代又一代的咖啡农民所付出的艰辛，咖啡商人在其中攫取的利润，以及每一个有不同偏好的消费者是如何选购市场上品类繁多的咖啡的。</span></p><h1 id='豆种'><span>豆种</span></h1><h1 id='处理法'><span>处理法</span></h1><p><span>一些不那么了解咖啡的人，谈到“精品咖啡”这一概念时，往往会提到几个特殊处理的咖啡品牌，比如“桃乐茜”“荔枝兰”什么的，这往往会引起一些“高傲”的咖啡爱好者的不满。而对于一些咖啡新手，又会“谈处理法色变”，这是因为他们过于惧怕“特殊处理法”或是“香精豆”了。本章的目的是给“处理法”祛魅。一方面我们要明确什么样的处理法是好的，什么样的处理法是我们应该抵制的，这是咖啡处理应遵循的基本原则。另一方面，我们深知，要想真正以平衡的心态正视咖啡处理法，就必须深入了解它。因此本章也会介绍当下最常见的几种处理法。需要说明的是，处理法的创新是与时俱进的，我们既要用基本原则来审视新的处理法，也要用宽容的目光来接纳它，特别是要关注其产生的时代背景。这些新的处理法往往由某些国家的咖啡研究所以及劳动人民创造或推广，我们应该明白其付出的汗水。当然，处理法的发展实在迅速，本章也不可能列举完所有现存的处理法，应当明白，处理法的学习是长期的、持续的，而不是一劳永逸的。</span></p><h2 id='基本原则'><span>基本原则</span></h2><p><strong><span>什么是香精豆？</span></strong></p><p><span>2022年，一篇名为“云南咖啡豆，困在香精里”的新闻报道在行业内掀起了巨大风浪。不少消费者和从业者都参与到了讨论之中。文章指出，云南出现了越来越多的要求添加人工添加剂的咖啡豆订单，同时描述了消费端香精豆驱逐正统处理法，劣币驱逐良币的现象。该报道随后引起了大量的转发与评论，很多消费者都对文中出现的“香精豆”产生了巨大的恐慌感，认为这种咖啡豆非常不健康，有严重的视频安全问题。那么到底什么是“香精豆”？</span></p><p><span>香精是指人工调配的、具有多种香料的具有香气的混合物。香精是一种食品添加剂。香精咖啡豆是指在处理好的咖啡生豆中添加</span><strong><span>适量的</span></strong><span>香精，给予咖啡豆浓郁的且具象的</span><strong><span>指向性香气</span></strong><span>。这种香气多为水果香，比如桃子、荔枝，还有一些发酵感较强的红酒、巧克力香气等等。我们必须要明白两件事——这一行为是否危害到咖啡饮用者健康？这种咖啡豆是否符合国家食品安全要求？</span></p><p><span>首先，绝大多数香精豆是对人体没有额外损害的。虽然咖啡豆里被认为地添加了香精，但是这些香精作为常见的食品添加剂，广泛地出现在各种人工加工的食品中。只要其剂量在安全的范围内，则不会对人体产生有害影响，因此我们根本无需担心饮用香精豆会对身体产生多么严重的危害。现实中咖啡豆即使使用香精处理，其计量也会在安全的范围内。因为过量的香精反而会导致咖啡非常难喝，制作者也不会售卖经过香精处理更加难喝的咖啡豆，所以在香精豆表面残留的香精计量一般是安全的。</span></p><p><span>但是，我们还需要注意相关食品安全标准。根据GB2760-2014，国家明确禁止在咖啡豆和茶叶中添加食品添加剂。因此，香精豆是不符合国家食品安全标准的，售卖香精豆属于违法行为。</span></p><p><strong><span>比“香精豆”更多的是”增味豆“。</span></strong></p><p><span>事实上，咖啡产业中很少有上文所说，直接使用香精的咖啡豆，实际上，大部分的添加剂是在咖啡处理过程中添加的。它们往往参与咖啡处理过程中的化学反应，使咖啡定向发展出来某几种味道。例如，云南的很多小农种植的咖啡都是卡蒂姆，往往作为商业豆流入市场。但是小农种植咖啡的成本较高，商业豆的价格甚至不能给农民回本，因此近几年有很多企业帮助农民科学种植咖啡，努力以精品咖啡的价格卖出咖啡。但是这些咖啡即使采用全红果采摘，采用科学的传统处理法，也依然具有严重的瑕疵风味。为遮盖瑕疵风味，许多企业采用名为&quot;红酒日晒“的方法，使用一些氨基酸类酵素对成熟的咖啡樱桃进行定向发酵。最后获得的咖啡生豆具有一定的红酒风味，酵感比一般的处理法咖啡要明显非常多。</span></p><p><span>这种咖啡豆我们一般称作增味咖啡豆，其处理方法往往含有酵素处理、增味处理、酵素水洗等字眼，我们统称为增味处理法。这种咖啡在哥斯达黎加、哥伦比亚的发展都非常快速，已经逐渐趋于成熟。我们可以再具体把增味处理法分为较激进的方法和较缓和的方法。激进的方法目的是产生一些特征明显、难以在传统处理咖啡中出现的风味，例如椰子、浓郁的水蜜桃、白兰地等。这种方法在一定程度上补足了部分消费者的需求，发展出了一种或好几种新式的咖啡风味。而缓和的方法则是为了保证庄园咖啡豆的稳定品质。这些方法可以通过精准控制参数来保证每一批次甚至每个产季的咖啡风味都非常接近，可以用来大量出口或者满足指定的咖啡供货商的需求。同时，缓和的方法也意味着它对咖啡风味发展的干预程度相比第一种方法更小，处理结果整体上也更接近咖啡本身的味道。</span></p><p><strong><span>历史视角</span></strong></p><p><span>纵观整个咖啡历史，这种植物果实的饮用方式已经发生了很大的变化。在埃塞俄比亚古老的传说中，咖啡樱桃作为一种水果，被人们直接食用。而在古代埃塞俄比亚，咖啡豆则会被捣碎，在一个长口的陶瓶中浸煮。那时候，人们还会通过浸泡咖啡叶的方式获取咖啡因。到了近代，阿拉伯人利用日晒方式获取咖啡生豆。这并不是因为日晒法多么先进，这仅仅是因为阿拉伯地区光照充足，日晒法可以非常简单便捷地获取咖啡生豆。至于水洗法的出现则是因为在一些光照不那么充足的地区，要想获取咖啡则必须减少对阳光的依赖，因此索性通过水洗的方式先去掉果皮果胶，再进行干燥，这样就可以在缺少光照的地区高效获取咖啡了。在一些极端潮湿的地区，例如印度尼西亚，即使采用水洗法，农户也很难干燥咖啡豆，因此他们发明了湿刨法。而在巴西，为了解决水资源短缺、天气潮湿带来的影响，再加上新技术的产生使得咖啡去皮变得容易，因此蜜处理法应运而生。</span></p><p><span>但不管处理法如何变化，这些方法的目的都只是让人们更高效地获取咖啡因，而不是追求咖啡有更多更好的风味物质。事实上，我们会发现，人们追求咖啡风味只是近几年的事。在这之前，咖啡处理法仅仅服务于快速获取咖啡因这件事上，与怎样让咖啡变得好喝并没有关系。直到精品咖啡概念的提出，我们才开始关注咖啡中的酸质和甜感，开始研究咖啡中的风味物质有哪些。然后，在短短的几十年间，厌氧、二氧化碳浸渍、酵素水洗等等的咖啡处理法迅速发展起来。这时候，咖啡处理法就被赋予了除快速获取咖啡因以外的另一大作用——提升咖啡风味。</span></p><p><span>我以为，要明确咖啡处理法在咖啡中的地位，要拥有一个历史视角。咖啡处理法的进步，尤其是近些年提出的新处理法，很大程度上应归功于现代食品工业的进步。我们得以对咖啡樱桃进行定向的风味处理，发展出我们想要的风味。可是，现代食品工业发展史在咖啡的饮用史面前简直是沧海一粟，这些新处理法还需要大量的时间去检验。我们既不需要对这些新的处理法有太多的抵触，也不应该大力吹嘘其作用。我们需要做的，应当是体验各种新式处理法，考虑其优劣。举个例子，饮用一支使用特殊处理法的咖啡豆时，我们应该明确其给咖啡带来了哪些指向性风味？这些风味是该处理法中哪个步骤或操作带来的？这些风味是否自然？有没有明显的瑕疵风味？就算这种处理法很好，但是它有没有潜在的食品安全问题？这种处理法对行业发展产生的影响是否积极？为什么？这样的问题还有很多很多。</span></p><p><span>这里我还需要解释一下。首先是我为什么勇于尝试新处理法？诚然，我不是一个咖啡从业者，也不是一个咖啡或食品工程专业的学者，我仅仅是一个咖啡消费者，并且还是一个不喜欢非自然风味的咖啡的消费者。这么看上去，我应该对这些新式处理法恨之入骨才对，至少也应该是漠不关心才对。针对这个质疑，我必须强调，咖啡行业的发展依靠着每一个参与到这个行业的个体，无论你是咖啡种植者、处理站工作人员，还是生豆贸易商、烘焙商、零售商，还是研究学者、咖啡店主，甚至是企业工作人员，更不用说咖啡消费者。</span></p><p><span>很多人可能不信，消费者对于咖啡行业的影响超过了任何其他的咖啡从业者。在这里我可以举个例子。为什么很多哥斯达黎加的“增味咖啡</span></p><p><span>更加重要的问题是，“自然”的咖啡风味是什么？</span></p><p><span>首先明确，对咖啡生豆直接使用食品添加剂的行为是不符合国家标准的，事实上也不符合欧盟标准。因此，我们不允许这种方法的售卖</span></p><p><span>在谈咖啡处理应遵循的基本原则以前，我们先用消费者们熟悉的“茶饮”来类比一下。我们现在所接触的茶饮分为很多种。有一种是“原叶茶”，即我们买来茶叶自己冲泡的茶饮；有一种是“鲜果茶”或“奶茶”，它们往往是由门店的原叶茶在添加一些鲜榨果汁或牛奶制作而成，保质期很短，门店买来当下就需要饮用。还有一种茶饮被做成了“瓶装饮料”（除东方树叶等原叶瓶装茶等），这些瓶装饮料往往更甜，添加了一些甜味剂和防腐剂，热量也更高。在很多年前，还有一些非法添加过量食品添加剂的饮料，往往达不到国家食品安全标准，对身体有较大的健康危害。我们可以认为，水洗、日晒、蜜处理这样的方法就像第一种茶饮一样，非常的传统，很接近大自然的风味；而厌氧、慢速干燥等处理法，就像第二种茶饮一样，有一些人为的定向发酵干预，但总体上讲还是比较接近自然的风味，只不过我们希望它们更加好喝，更加符合大多数人的口味，进行了一定的改良；而酵素处理法则更像第三种处理法，它往往只是用来遮盖原料的瑕疵，并且没那么健康，人为影响的因素更多了；而所谓“香精豆”则是第四种，不仅由劣等原料制成，而且危害健康。</span></p><p><span>我非常推崇原叶茶，我几乎每天都会喝原叶茶；我在外出时也经常选择少糖甚至不加糖的奶茶或鲜果茶；我虽然不怎么喝瓶装的饮料茶饮，但我也从来不排斥它们，偶尔实在口渴或者想喝一些甜的东西时也会买来喝。但是那种不符合国家食品安全要求的茶饮，则是我特别抵制的。</span></p><p><span>同样的，对于咖啡处理法来讲，我极力推崇经典的处理法，比如日晒、水洗与蜜处理。对于包含厌氧的或是慢速日晒的咖啡，我虽然明白这种处理法可能存在定向发酵的可能，或者可能不那么自然，但是我依然认为这是咖啡本身的味道。而对于包含特殊酵母的定向发酵，我则不太感冒。事实上，我从来不喝有酵母参与的定向发酵处理的咖啡，但我对其依然有一定的包容度。我认为，当消费者希望从咖啡中获取更加具象的，或是更加浓郁、丰富的风味时，这些咖啡可以满足这些消费者的诉求。但是，对于香精豆，则是我们所有咖啡从业者和消费者应当共同抵制的。这种人工添加剂未必对人类有害</span></p><h1 id='国家与地区'><span>国家与地区</span></h1><p><span>目前世界上种植咖啡的国家主要集中在非洲中东部、北美南部到南美北部以及东南亚和南亚。主要的咖啡生产国如下：</span></p><ul><li><span>巴西</span></li><li><span>越南</span></li><li><span>哥伦比亚</span></li><li><span>印度尼西亚</span></li><li><span>洪都拉斯</span></li><li><span>埃塞俄比亚</span></li><li><span>印度</span></li><li><span>危地马拉</span></li><li><span>乌干达</span></li></ul><p><span>除这些国家以外还有：肯尼亚，也门，巴布亚新几内亚，巴拿马，卢旺达，坦桑尼亚，萨尔瓦多，厄瓜多尔，玻利维亚，墨西哥，中国，缅甸，老挝，委内瑞拉，尼加拉瓜，哥斯达黎加等</span></p><h2 id='中国云南'><span>中国云南</span></h2><p>&nbsp;</p><h2 id='埃塞俄比亚'><span>埃塞俄比亚</span></h2><h3 id='综述-1'><span>综述</span></h3><p><span>埃塞俄比亚，全名埃塞俄比亚联邦民主共和国（Federal Democratic Republic of Ethiopia），古称阿比西尼亚。地处东非，国土面积111万平方公里。人口1.2亿，是世界上人口最多的内陆国家。19世纪成功抵御了埃及和意大利的入侵，因此未丧失主权。埃塞俄比亚有80多个民族，主要信仰基督教和伊斯兰教。现在面临种族问题，因此常常有内战爆发。2022年，埃塞俄比亚全国GDP为1268亿美元，人均GDP1027美元。农业是该国最大的部门，占GDP比重36%。行政区划如图所示。</span></p><p><img src="/Linked/Ethiopia/Map_of_zones_of_Ethiopia.png" referrerpolicy="no-referrer" alt="埃塞俄比亚行政区划图" title="埃塞俄比亚行政区划图"></p><p><span>行政区划单位可以分为地区（Region）、大区（Zone）、县（woreda）、村（kebele）。</span></p><h3 id='咖啡产区-1'><span>咖啡产区</span></h3><p><span>埃塞俄比亚是咖啡的原产国。世界上所有的咖啡都是从埃塞俄比亚传播出去之后再基因突变的品种。咖啡目前在埃塞俄比亚被广泛种植，分布在全国多个产区。咖啡产区地图如下图所示。</span></p><p><img src="/Linked/Ethiopia/Coffee Regions of Ethiopia.png" referrerpolicy="no-referrer" alt="埃塞俄比亚咖啡产区地图" title="埃塞俄比亚咖啡产区地图"></p><p><span>一般，我们把咖啡产区分为两部分。第一部分位于东非大裂谷以东，具体包括：西达玛（Sidama）、耶加雪菲(Yirgacheffe)、古吉（Guji）、巴勒（Bale）、哈拉（Harar）。第二部分位于东非大裂谷以西，包括：班其玛吉（Bench Maji）、卡法（Kaffa）、里姆吉玛（Limu Jimma）。</span></p><h4 id='耶加雪菲-1'><span>耶加雪菲</span></h4><p><span>首先我们介绍一下耶加雪菲。耶加雪菲主要依靠小农合作社生产咖啡，种植豆种主要是原生种Heirloom。这种咖啡豆往往非常小，其貌不扬但风味十足。常见茉莉花香与柑橘调性，经常有果汁感。</span></p><p><span>耶加雪菲（Yirgacheffe）在阿姆哈拉语中意为“居住在湿地”。原本耶加雪菲仅仅指耶加雪菲县，即图中最中间的县。但是后来用耶加雪菲代指了整个咖啡产区。从狭义上来讲，耶加雪菲产区包括：耶加雪菲（Yirgacheffe）、布勒（Bule）、迪拉（Dilla）、科契尔（Kochere）、盖德布（Gedeb）、维纳果（Wenago）。但是随着这个产区在国际上名声鹊起，一些欧美咖啡进出口公司将隔壁的阿巴亚（Abaya）和格兰纳（Gelana）也划入了耶加雪菲产区。严格上讲，这两个产区出产的咖啡风格和传统耶加雪菲相去甚远，况且这两个县的面积甚至比耶加雪菲传统产区的六个县都要大不少。因此我倾向于采取“耶加雪菲”这一产区的狭义用法，仅仅包含传统的6个县。</span></p><p><span>县是埃塞俄比亚第三级行政单位，还不够小。埃塞的小农模式意味着咖啡按家庭为单位来种植，按村庄/合作社为单位来处理。这说明了两点。第一，我们对埃塞俄比亚的咖啡溯源不能精确到家庭。因为每个咖啡农采好咖啡以后会运到附近的处理站处理。处理站会将咖啡鲜果混合，然后处理。这一步会导致咖啡生豆从家庭的农产品变成处理站的批次，因此合理的溯源方式是溯源到处理站。第二，处理站会处理附近的咖啡农户采摘好的咖啡鲜果，但是距离较远的咖啡农户由于交通问题就会送给其他的处理站。因此，处理站在很多场景下都是和村级行政单位重合的。想象一下，每个村都很有可能有一个处理站，每个村的农户选择把鲜果卖给最近的处理站。事实上，在埃塞俄比亚的一些咖啡种植规模化地区，咖啡是以农业合作社的形式进行生产的。因此，合作社常常拥有自己的处理站。这就导致有时候村级行政单位和处理站不完全吻合，这是在我刚刚入门咖啡时常常感到困惑的事情。</span></p><p><span>耶加雪菲是个传统的咖啡种植产区，自然也采取了这种合作社模式。接下来我们会尽量梳理耶加雪菲产区内的村落和合作社，以及它们对应的处理站。但是需要说明的是，埃塞俄比亚毕竟是欠发达国家，而耶加雪菲也是埃塞俄比亚的乡村，在那里有没有通网我们都不能确定，因此我们很难从互联网上找到100%可靠的信息。即便如此，我相信我们对处理站的归纳还是会对我们更好地喝咖啡产生一定的帮助。</span></p><p><img src="D:\StudyProgram\咖啡\Linked\Ethiopia\The Yirgacheffe Zone Map.png" referrerpolicy="no-referrer" alt="耶加雪菲产区地图" title="耶加雪菲产区地图"></p><h2 id='巴拿马'><span>巴拿马</span></h2><h3 id='咖啡产区-2'><span>咖啡产区</span></h3><p><span>巴拿马的咖啡产区主要集中在巴鲁火山附近。它们分别是波奎特产区、沃肯产区、雷纳西米恩托产区。其中波奎特产区最著名，沃肯次之。</span></p><p><img src="D:\StudyProgram\咖啡\Linked\Panama\Coffee_Region.jpg" alt="巴拿马咖啡产区地图" title="巴拿马咖啡产区地图" style="zoom:67%;" /></p><h3 id='著名庄园介绍'><span>著名庄园介绍</span></h3><h4 id='阿尔铁里庄园-finca-altieri'><span>阿尔铁里庄园 Finca Altieri</span></h4><p><span>庄园由巴西裔美国人尤金·阿尔铁里于2002年创立，是一个家族性质的庄园。它位于波奎特产区的Callejon Seco地区，8次上榜BOP（Best of Panama）。</span></p><p><span>庄园共有两个咖啡园，11个地块，种植海拔为1600~2200米。咖啡园名称为Mima和Pipim。地块及其海拔分别为Coquito（2000）、Luci（1900）、Alessa（1850）、Ale（1820）、Combi（1800）、Dilgo（1770）、Rola（1750）、Tom（1700）、Yuyi（1700）、RR（1305）、Pisu（1300）。</span></p><h2 id='卢旺达'><span>卢旺达</span></h2><h3 id='综述-2'><span>综述</span></h3><p><span>卢旺达（Rwanda）全称卢旺达共和国（Republic of Rwanda），东非内陆国家，北邻乌干达，南邻布隆迪，东接坦桑尼亚，西边是刚果。国土面积2.6万平方公里，为对比列出：北京市1.6万平方公里，海南省3.5万平方公里。2022年人口预测达到1324万人，非常稠密。2024年GDP为137亿美元，与此对比：太原市迎泽区GDP为154亿美元。人均GDP989美元。整个国家西部为山脉，东南部为草原。每年有很多人来卢旺达旅游，寻找野生黑猩猩。首都基加利是全非洲最干净的城市之一。</span></p><p><span>主要宗教为基督教，少数伊斯兰教。官方语言是卢旺达语、法语和英语。主要民族为胡图族，少数图西族，二者占全部人口的99%。</span></p><p><span>19世纪末，卢旺达受到德国殖民，在第一次世界大战后由比利时殖民统治，1962年独立。1994年爆发卢旺达种族大屠杀。随后，卢旺达爱国阵线领导人保罗·卡加梅开始独裁政权。目前，卢旺达是一党制，形式民主，政治较清廉，在非洲国家中整体整洁度很高。</span></p><p><span>卢旺达自然资源匮乏，主要依赖农业。农业部门占全国GDP比重为32%左右。目前全国GDP比重最大的部门是服务业。这得益于近些年旅游业的增长。卢旺达主要出口产品为咖啡、茶叶、香料。咖啡在20世纪出由比利时人引进，占出口额的70%。</span></p><p><span>卢旺达一共有五个省份，其中基加利是首都特区。在省份下还设置了30个区，区是卢旺达二级行政单位，也是独立性相对较大的政治单位，各区经济有一定的独立性。</span></p><p><img src="D:\StudyProgram\咖啡\Linked\Rwanda\Rwanda_Provinces.png" alt="卢旺达行政区划图" title="卢旺达行政区划图" style="zoom:150%;" /></p><p><img src="D:\StudyProgram\咖啡\Linked\Rwanda\Rwanda_Sectors.png" referrerpolicy="no-referrer" alt="卢旺达行政区划图" title="卢旺达行政区划图"></p><h3 id='咖啡历史'><span>咖啡历史</span></h3><p>&nbsp;</p><h3 id='咖啡种植'><span>咖啡种植</span></h3><p><span>首先看一下卢旺达的</span><strong><span>地理环境</span></strong><span>。</span></p><p><img src="D:\StudyProgram\咖啡\Linked\Rwanda\Rwanda_Topography.png" referrerpolicy="no-referrer" alt="卢旺达地理地图" title="卢旺达地理地图"></p><p><span>卢旺达境内有多个湖泊，最大的是西面的基伍湖。卢旺达还被称作千丘之国。气候是温带/热带高原气候，气候温和，年平均温度18度，昼夜温差大。咖啡主要种植在海拔1500-2200m的区域。</span></p><p><strong><span>重要地理区域：</span></strong><span>阿卡盖拉国家公园（Akagera National Park）是卢旺达的一座重要国家公园，位于该国的东部，靠近坦桑尼亚边境，以其多样的生态系统而著称，包括稀树草原、湿地、湖泊和河流。公园的核心地带是阿卡盖拉河及其周围的湿地系统，这些湿地是非洲中部最大的湿地之一。尼永韦国家公园（Nyungwe National Park）位于卢旺达南部的山地，和布隆迪接壤。这里是东非最大的山地雨林，灵长类动物高达13种，生活着约500只黑猩猩。</span></p><p><strong><span>咖啡产季：</span></strong><span>阿拉比卡产季为3-6月，罗布斯塔为5、6月。</span></p><p><strong><span>咖啡出口：</span></strong><span>出海港口为肯尼亚的蒙巴萨（Mombasa）和坦桑尼亚的达累斯萨拉姆（Dar es Salam）。出口的主要目的地为美国与欧洲。</span></p><p><strong><span>咖啡处理法：</span></strong><span>水洗为主</span></p><p><strong><span>代表豆种：</span></strong><span>波旁（Bourbon）</span></p><p><span>关于卢旺达咖啡的更多信息可以查看</span><a href='https://www.naeb.gov.rw/'><span>卢旺达农业出口发展局：National Agricultural Export Development Board,(NAEB)</span></a></p><h3 id='咖啡产区-3'><span>咖啡产区</span></h3><p><span>咖啡产区地图如下图所示。主要产区有三个，分别是北部产区、南部产区和基伍湖（西部）产区。</span></p><p><img src="D:\StudyProgram\咖啡\Linked\Rwanda\rwandaweb.png" alt="卢旺达咖啡产区地图" title="卢旺达咖啡产区地图" style="zoom:50%;" /></p><p><span>事实上，咖啡的种植区域在卢旺达相当复杂，因此，我们再用一个咖啡树分布图来进一步解释卢旺达的产区问题。</span></p><p><span>西部的一大片产区就是基伍湖产区，这是卢旺达咖啡产量最高的一个产区。我喝过的卢旺达咖啡也都是来自基伍湖的。这里的咖啡往往有中等莓果风味，甜感不错。相比肯尼亚的咖啡，这里的咖啡更加酸甜平衡，又不失莓果风味。</span></p><p><span>北部省份和南部省份的咖啡质量也比较高，相比之下，东南地区的咖啡种植海拔就没那么高了，质量也相对没有那么好。</span></p><p><img src="D:\StudyProgram\咖啡\Linked\Rwanda\Rwanda-Coffee-Areas-Map-Sweet-Marias-4.jpg" alt="卢旺达咖啡树分布图" title="卢旺达咖啡树分布图" style="zoom:80%;" /></p><h1 id='咖啡日记'><span>咖啡日记</span></h1><p><span>这个地方主要是记录一些我喝过的咖啡，尤其是一些好喝的咖啡。索引按国家的英文首字母排序。在国家内部，依照产区分类。这样分类的好处是方便溯源。对于消费者（也就是对我）来说，喝咖啡最主要的就是两件事，一件是感受风味，一件是产地溯源。把这两件事情结合起来，就可以把喝咖啡变成一种文化，变成一种享受生活的方式。只喝咖啡而不思考产地，那么咖啡和瓶装饮料无异；只看产地不喝咖啡则是纸上谈兵。</span></p><p><span>另外，每款咖啡的标题不会具体标出咖啡的所有信息，而是用比较具有代表性的词语精简概括。例如，生产在埃塞俄比亚、班莎产区、阿尔贝格纳处理站的原生种咖啡，我会用“埃塞 阿尔贝格纳”来代替——班莎产区太大，而原生种又没有什么说的必要，反而是阿尔贝格纳可以让喜爱喝咖啡的人士立马联想到这里茶感明显、热带水果风味足的代表性风味。而一些获奖咖啡，那我尽量会标出奖项。对于一些特殊少见的品种，我更倾向于用豆种来概括。</span></p><p><span>当然也不用太担心，每款咖啡我都会设置一个“豆卡”的关键词，提供该咖啡的详细信息，具体包括：产季、国家、大产区 （子产区）、处理站或庄园、豆种、处理法、烘焙程度、价格。</span></p><h2 id='中国云南-chinas-yunnan'><span>中国云南 China‘s Yunnan</span></h2><h3 id='普洱'><span>普洱</span></h3><h4 id='澜沧-汉谷科庄园-厌氧慢速日晒'><span>澜沧 汉谷科庄园 厌氧慢速日晒</span></h4><p><strong><span>豆卡：</span></strong><span>2023产季 中国云南 普洱产区 临沧市 汉谷科庄园 卡蒂姆 厌氧慢速日晒 浅度烘焙 ￥0.15/g</span></p><p><em><span>关于厌氧慢速日晒：</span></em><span>厌氧慢速日晒（Anaerobic Slow Dry，ASD），有时被称作双重发酵慢速干燥。具体做法是采摘成熟度较高的咖啡鲜果，日晒一定的时间，然后低温厌氧发酵，再干燥。本批次经历了日晒5天、低温厌氧3-5天、再干燥5天、最后堆厚进行5-7天有氧发酵。</span></p><p><em><span>关于冲煮方案：</span></em><span>调低了研磨度，从8格调整到了9格，因为卡蒂姆可能并不耐萃。此外我的水温也降低了1~2度。这款咖啡烘焙日期有点久了，已经有两个半月了。专门减少了焖蒸时间。</span></p><p><strong><span>豆形：</span></strong><span>经典卡蒂姆，豆子颜色偏浅，腹部较平、光滑，颗粒大小中等。</span></p><p><strong><span>香气：</span></strong><span>香气略微有一些不清晰，有一些甜橙的香气，捎带点烟熏和山楂的气味，闻多了会有一种生津感，果汁味浓。</span></p><p><strong><span>风味：</span></strong><span>整杯的风味还是偏甜橙，有一些果汁感。触感比较厚重，有非常成熟的红色苹果汁的感觉，甜感不错。但是缺陷很明显。首先是整个咖啡没有一个清晰的风味指向，并且味道没有层次感。从一口咖啡中，我或许能感受到黄色水果，又能感受到一些红色莓果，又好像还有木质味和烟熏味，余味苦味还很重。这种模糊的风味呈现常常出现在发酵过程比较糟糕的咖啡中。诚然卡蒂姆本身底子比较差，在处理法上下功夫是一个正确的方向，但这个批次选用的处理法带来的代价也很高昂。其次，在尾端还是能感觉到刮喉感，这也是咖啡风味浑浊的一个体现。最后还要提一下在这款咖啡中偶尔体现出的“绿色”风味。在闻香阶段，又一些甜瓜的气味若隐若现，刚开始品饮时反而感受不到了。在温度降低以后，这种绿色水果的风味变成了泥浆和根茎的味道，浑浊无感。</span></p><p><span>总的来评价一下。这款咖啡作为卡蒂姆，种植条件可能也不是很优异，但是却没有选择红酒增味的处理法，可以看到种植者在寻找适合云南本土处理法所作出的努力。即使这款咖啡在风味强度上表现不错，但在其他方面呈现出来的缺点并不能被抵消。一杯好的咖啡并不是因为它的风味强度高，而是基本的风味清晰、触感扎实、酸甜平衡自然。很可惜，这个批次在这三个方面都做得不是很好。不过，0.15的单克价赋予了这杯咖啡极强的性价比。我觉得这杯咖啡适合进阶学习者感受“模糊”的感觉，这次品饮给我也带来了很多新的感悟。</span></p><p>&nbsp;</p><h2 id='哥伦比亚-colombia'><span>哥伦比亚 Colombia</span></h2><h3 id='蕙兰'><span>蕙兰</span></h3><h4 id='塔玛娜庄园-帕帕尤'><span>塔玛娜庄园 帕帕尤</span></h4><p><strong><span>豆卡：</span></strong><span>2023产季 哥伦比亚 蕙兰产区 皮塔尔市（Pital） 塔玛娜庄园 帕帕尤 水洗 浅度烘焙 ￥0.31/g</span></p><p><strong><span>香气：</span></strong><span>主要有一些红糖甜感，一些成熟度很高的红葡萄味，可以用水果硬糖描述。</span></p><p><strong><span>风味：</span></strong><span>入口苦度比较高，第一时间给人一种核果的风味。然后会出一些木质感。之后就会显现出酸质，比较类似于油桃果肉，有浓稠的果汁感。再喝第二口就可以感受到隐藏在苦感之下的甜感，并且有甘蔗汁和椰汁的糖感。温度降低之后，风味偏向于红糖。风味描述：杏仁、红提、甘蔗、红糖。回味有点芹菜等绿色蔬菜的味道。</span></p><p><span>第一次喝这个豆种，看豆形没有什么特殊的，个头中等，扁形，味道很突出木质调，比较有趣。种植海拔比较高，1700m左右。附上哥伦比亚蕙兰省皮塔尔市的行政区划地图。皮塔尔市人口为12000人，面积210平方千米。与此对比，太原市面积为7000平方千米，其中迎泽区面积105平方千米，小店区290平方千米。</span></p><p><img src="D:\StudyProgram\咖啡\Linked\Colombia\Huila_Pital.png" alt="皮塔尔市" title="皮塔尔市" style="zoom:60%;" /></p><h2 id='埃塞俄比亚-ethiopia'><span>埃塞俄比亚 Ethiopia</span></h2><h3 id='耶加雪菲-2'><span>耶加雪菲</span></h3><h4 id='切切里处理站-24toh水洗组亚军'><span>切切里处理站 24TOH水洗组亚军</span></h4><p><strong><span>豆卡：</span></strong><span>2024产季 埃塞俄比亚 耶加雪菲产区 歌迪贝区 切切里处理站 原生种 水洗 浅度烘焙 ￥0.33/g 2024TOH非洲大区水洗组亚军</span></p><p><strong><span>豆形：</span></strong><span>豆子非常小，一眼就可以辨认出来是埃塞俄比亚原生种。</span></p><p><strong><span>香气：</span></strong><span>香气是非常浓郁的茉莉花香，有一些红色水果味，柑橘的气味还是主调。</span></p><p><strong><span>风味：</span></strong><span>入口可以感到非常明显的绿茶感，body非常厚实、饱满，柑橘调性，很干净。后段呈现上扬的酸质，有果汁感。风味描述：茉莉花香、柑橘、绿茶、果汁感。</span></p><p><span>可以称得上埃塞俄比亚耶加雪菲产区的代表咖啡风味，非常标准。</span></p><h3 id='古吉'><span>古吉</span></h3><h4 id='bule-hamabal处理站-24埃塞toh水洗组冠军'><span>Bule Hamabal处理站 24埃塞TOH水洗组冠军</span></h4><p><strong><span>豆卡：</span></strong><span>2024产季 埃塞俄比亚 古吉产区 罕贝拉区 Bule Hamabal处理站 原生种 水洗 浅度烘焙 ￥0.42/g 2024TOH埃塞俄比亚区水洗组冠军</span></p><p><strong><span>豆形：</span></strong><span>小粒种，典型埃塞原生种</span></p><p><strong><span>香气：</span></strong><span>浓郁茉莉花香，明显的甜橙香气，有一点点红色浆果味，但主要是柑橘调。有一定的木质味和焦糖香气。中低温茉莉花香也很明显，多出了一种绿豆沙味。</span></p><p><strong><span>风味：</span></strong><span>有一些核果味，甜度特别高，可以用蜂蜜形容。触感厚重，绿茶感明显，甜橙风味占主基调。风味描述：茉莉花香、甜橙、蜂蜜、绿茶。</span></p><h3 id='西达玛'><span>西达玛</span></h3><h4 id='alo-班莎-14158-pb'><span>Alo 班莎 14158 PB</span></h4><p><strong><span>豆卡：</span></strong><span>2024产季 埃塞俄比亚 西达玛产区 班莎区 Alo咖啡主处理站 74158 PB 水洗 浅度烘焙 ￥0.47/g</span></p><p><strong><span>豆形：</span></strong><span>豆子非常小，第一次见到这么小的豆子。很多豆子上面还包裹着羊皮纸。说是圆豆，但是其实很多的豆子还比较平，并不是特别圆。圆豆子主要是一些特别小的豆子。推测一些咖啡果长出来比较小，这些果子内部可能只有一个种子。豆子比较硬。</span></p><p><img src="D:\StudyProgram\咖啡\Linked\Coffee Beans\Alo PB74158.jpg" alt="Alo PB 74158" style="zoom:33%;" /></p><p><strong><span>香气：</span></strong><span>浓郁茉莉花香，清新的柑橘调</span></p><p><strong><span>风味：</span></strong><span>入口比较平淡，难以找到风味方向。甜苦酸都比较平衡。酸质主要是柚子或者是甜橙。放凉之后会好很多</span></p><p><span>这只豆子比较少见，非常迷你，勾起了我的很大兴趣。它的香气高扬，是传统的埃塞风味，但香气更加浓郁，更加具有层次感。相比之下，口感就平淡了许多。它的风味指向不够清晰，酸质主要是一些金柚子的感觉。很重要的一点是，这只豆子可能适合减少萃取率。即使在8.5格的情况下，这只豆子依然萃取速度较慢，很容易萃出苦感。</span></p><h4 id='埃塞2024toh-蜜处理第一名'><span>埃塞2024TOH 蜜处理第一名</span></h4><p><strong><span>豆卡：</span></strong><span>2024产季 埃塞俄比亚 西达玛A区 阿尔贝格纳 Dawencho处理站 74112&amp;74158 蜜处理 浅度烘焙 ￥0.48/g 2024TOH非洲大区蜜处理组第一名</span></p><p><strong><span>豆形：</span></strong><span>经典埃塞俄比亚小粒种，豆子比较小，但是饱满圆润</span></p><p><strong><span>香气：</span></strong><span>饱满浓郁的热带水果风味，闻起来就甜感（果糖感）十足。有一些黄色花香，幽幽的紫葡萄味。</span></p><p><strong><span>风味：</span></strong><span>入口先是一些苦感，然后迅速转甜，酸质非常活泼。风味描述：黄色花朵、草莓、樱桃、石榴、荔枝。缺点是有一些涩味。</span></p><p><span>第一次看到Dawencho的蜜处理还是比较惊讶的，因为这个处理站主要以水洗和日晒出名，偶尔还能见到厌氧日晒。Dawencho现在的咖啡质量应该是全埃塞数一数二的了吧。好喝性价比高，就选朵望丘！</span></p><h2 id='肯尼亚'><span>肯尼亚</span></h2><h3 id='涅里'><span>涅里</span></h3><h4 id='dormans-夏姬-ab-水洗'><span>Dormans 夏姬 AB 水洗</span></h4><p><strong><span>豆卡：</span></strong><span>2024产季 肯尼亚 涅里产区 Dormans公司 SL28&amp;SL34 水洗 浅度烘焙 ￥0.22/g</span></p><p><strong><span>香气：</span></strong><span>红莓、红樱桃香气，酸气很强，梅子干香气，有生津感</span></p><p><strong><span>风味：</span></strong><span>入口红茶感非常明显，有一些乌梅的香气，还有柠檬的风味。入口甜感很不错，随后是持久的酸质。尾段有果汁感。风味描述：红莓、柠檬红茶、梅子干。</span></p><p><span>这杯肯尼亚等级不高，生豆也非常便宜，在低温下有一些烟感和杂质。但是，在高温下，持久的酸质和果汁感赋予这杯咖啡具象的柠檬红茶感。这种具象的感受我之前也在2023年的肯尼亚中喝到过。</span></p><p>&nbsp;</p><h2 id='巴拿马-panama'><span>巴拿马 Panama</span></h2><h3 id='波奎特'><span>波奎特</span></h3><h4 id='阿尔铁里庄园-ale地块-瑰夏'><span>阿尔铁里庄园 Ale地块 瑰夏</span></h4><p><strong><span>豆卡：</span></strong><span>2024产季 巴拿马 波奎特产区 阿尔铁里庄园 瑰夏 水洗 浅度烘焙 ￥0.66/g</span></p><p><strong><span>豆形：</span></strong><span>豆子比较大，长条形，是非常标准的巴拿马瑰夏形状</span></p><p><strong><span>香气：</span></strong><span>茉莉花香，有点偏黄色花朵，柑橘和热带水果</span></p><p><strong><span>风味：</span></strong><span>刚入口基本没有风味表现，之后才有一些甜橙的酸甜感，稍微带点无花果风味，给人一种很干净的印象。尾端酸质突出一些，可以感受到柠檬般的酸感。body比较醇厚，有绿茶感，口感很顺滑。风味描述：茉莉花香、甜橙、绿茶、无花果。</span></p><p><span>很干净的巴拿马瑰夏，水洗的处理法使得这个豆子很好的保留了巴拿马瑰夏的品种特征，唯一的美中不足可能是风味强度比较弱。但毕竟是水洗瑰夏，可以理解。高性价比，6毛的单克价，还是高海拔。很适合作为巴拿马瑰夏入门，体验原汁原味的“瑰味”。</span></p><h4 id='蕾利达庄园-中烘铁皮卡'><span>蕾利达庄园 中烘铁皮卡</span></h4><p><strong><span>豆卡：</span></strong><span>2024产季 巴拿马 波奎特产区 蕾利达庄园 瑰夏 水洗 中度烘焙 ￥0.34/g</span></p><p><strong><span>豆形：</span></strong><span>豆子比较大，中等长度，很饱满。中烘豆子，比较黑，不出油。</span></p><p><strong><span>香气：</span></strong><span>高温时坚果香气占主要基调，有一些葡萄干的香气。中低温香气里包含香辛料。</span></p><p><strong><span>风味：</span></strong><span>入口苦味先占满口腔，随后迅速转甜。甜感的背后有一些核桃坚果的味道。低温捎带酸质，更温和，甜感不错。不带涩感，口感顺滑，焦糖感足。</span></p><p><span>喝中深烘豆子还是比较少。但我还是时常会买一些中烘豆子尝试。味蕾的刷新对我来说很重要。不喜欢中烘的焦苦味并不代表不喜欢体验焦苦的过程。这种时不时味蕾上的全新体验，令我非常愉悦。</span></p><h2 id='卢旺达-rwanda'><span>卢旺达 Rwanda</span></h2><h3 id='基伍湖'><span>基伍湖</span></h3><h4 id='coproca处理站-22055批次-波旁-日晒'><span>Coproca处理站 22055批次 波旁 日晒</span></h4><p><strong><span>豆卡：</span></strong><span>2022产季 卢旺达 基伍湖产区 Coproca处理站 波旁 日晒 浅度烘焙 ￥0.21/g</span></p><p><strong><span>香气：</span></strong><span>豆子不是很硬，湿香有浓郁的杏仁香气，强烈的酵感。红色水果的香气，尾段会有乌梅的气息涌上。</span></p><p><strong><span>风味：</span></strong><span>入口最明显的是杏仁风味，有核果的感觉。随后有非常强的酵感。中段略带一点点木质感和奶香。在这种状态下，莓果的风味反而没有那么突出。风味描述：红酒、杏仁、莓果，非常准确具象。温度降低以后，中段出现了蜜瓜、黄瓜等瓜类香气，莓果逐渐变成了红色樱桃。</span></p><p><span>这只豆子可以用来做感官校准了，红酒的酵感真的太明显了。最让我惊喜的是杏仁味，这是我第一次在咖啡中捕捉到这种香气，非常具象，很有趣。</span></p><p><span>豆形：不是很修长，但是属于瑰夏的正常范畴内。</span></p><p><span>香气：豆子不是很硬，湿香首当其冲是核果风味，随后是浓郁的茉莉花香。仔细闻，可以嗅到山楂、草莓、柚子、甜橙的香气。配合核果香气，很像甜杏。</span></p><p><span>风味：入口body感很重，一开始只是觉得有红色水果的香气，但是配合触感，更像山楂。因为甜感也很高，所以有一些杏桃的风味。放凉以后中段在会有蜜瓜感，尾端略涩。触感很重，拥有一定的红茶感的同时，酸质也很突出，尾端立马就有果汁感呈现。风味描述：茉莉花香、核果、山楂、红茶。</span></p><p><span>这是一款发酵得很不错的巴拿马瑰夏，他的酸质尤其突出，甜感也不错，又具备一定的苦度支撑。这是一支六边形战士，但是这也为他带来一些瑕疵。在中段和闻香的时候，风味还是不够清晰，容易给初学者带来一些困惑。总之还是瑕不掩瑜</span></p><h2 id='也门-yemen'><span>也门 Yemen</span></h2><h4 id='也门尼娅-精致日晒'><span>也门尼娅 精致日晒</span></h4><p><strong><span>豆卡：</span></strong><span>2023产季 也门 Al Ozmah 也门尼娅 精致日晒 浅度烘焙</span></p><p><strong><span>豆形：</span></strong><span>豆子都很饱满，偏向于圆形，大小中等。</span></p><p><strong><span>香气：</span></strong><span>坚果巧克力、黄糖，有一些花香</span></p><p><strong><span>风味：</span></strong><span>风味相当足，入口就有浓郁的”咖啡味“，然后酸质就平稳地表现出来。在酸质方面，高温时很像一些浅色水果，生津感明显。甜感也不错。温度降低以后就很有莓果的感觉。相比之下，更像是紫色葡萄。尾段有涩感。</span></p><p><span>也门尼娅是一支新豆种，它的形状饱满，风味强劲。在一杯浅烘咖啡中，我可以品尝到黑巧到莓果的丰富风味，非常惊喜。但是美中不足的是，这款豆子还是不够干净，有一些杂味和涩感。以后可以重点关注一下这个豆种，多多品尝来自也门其他产区的也门尼娅。</span></p><p>&nbsp;</p></div></div>
+</body>
+</html>
