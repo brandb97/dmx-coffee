@@ -25,14 +25,11 @@ class imgHTMLParser(HTMLParser):
         self.output.append('>')
  
     def handle_endtag(self, tag):
-        if tag != 'h1':
-            self.output.append(f'</{tag}>')
+        self.output.append(f'</{tag}>')
  
     def handle_data(self, data):
         if self.output:
-            last_tag = self.output[-1].split()[0]
-            if last_tag != 'h1':
-                self.output.append(data)
+            self.output.append(data)
  
     def handle_comment(self, data):
         self.output.append(f'<!--{data}-->')
